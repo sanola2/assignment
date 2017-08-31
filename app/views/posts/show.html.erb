@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+<br><hr>
+<p>댓글들</p>
+<%=@comments.each do |comment|%>
+<p><%=comment.content%></p>
+<%end%>
+<hr><br>
+
+<h3>댓글 다세요<h3>
+<form action="/posts/show/<%=@post.id%>/comments/create" method="post">
+  <input type="text" name="input_comment">
+  <input type="submit" >
+</form>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
